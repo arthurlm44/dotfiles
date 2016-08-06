@@ -1,11 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/candycode.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'scrooloose/nerdtree'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'fatih/vim-go'
 call plug#end()
 syntax on
 filetype plugin indent on
@@ -16,10 +13,6 @@ set backup
 set backupdir=~/.tmp/backup
 set undofile
 set undodir=~/.tmp/undo/
-set mouse=a
 colo candycode
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
-autocmd VimEnter ~/workspace/* NERDTree
-autocmd VimEnter * wincmd p
-
