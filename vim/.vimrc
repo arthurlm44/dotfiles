@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/candycode.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
-Plug 'fatih/vim-go'
 call plug#end()
 syntax on
 filetype plugin indent on
