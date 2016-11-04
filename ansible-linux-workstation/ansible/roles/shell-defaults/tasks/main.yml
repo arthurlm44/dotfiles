@@ -1,0 +1,14 @@
+- name: git alias st to status
+  git_config: scope=global name=alias.st value=status
+
+- name: git alias br to branch
+  git_config: scope=global name=alias.br value=branch
+
+- name: git alias co to checkout
+  git_config: scope=global name=alias.co value=checkout
+
+- name: install mavenlink bash aliases
+  copy: dest=~/.bash-preferences.sh src=bash_preferences.sh
+
+- name: load aliases
+  lineinfile: dest=~/.profile line="source ~/.bash-preferences.sh"

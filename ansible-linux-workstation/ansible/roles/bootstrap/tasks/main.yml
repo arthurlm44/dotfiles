@@ -1,0 +1,21 @@
+---
+- name: ensure latest version of git is installed
+  become: true
+  package: name=git state=latest
+
+- name: install vim
+  become: true
+  package: name=vim state=latest
+
+- name: setup for vimrc
+  file: state=directory path=~/.tmp/{{ item }} 
+  with_items:
+    - "undo"
+    - "backup"
+    - "swap"
+
+- name: install vim plugged
+  shell: "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+- name: install vimrc
+  copy: src=vimrc dest=~/.vimrc

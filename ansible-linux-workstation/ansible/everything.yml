@@ -1,0 +1,6 @@
+---
+hosts: localhost
+  roles:
+    - bootstrap
+    - security
+    - shell-defaults

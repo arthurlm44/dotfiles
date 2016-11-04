@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - set_fact:
+        unlocked: false
+
+    - name: reinstall locked template
+      become: true
+      template: src=templates/sudoers.j2 dest=/etc/sudoers validate='visudo -cf %s'
