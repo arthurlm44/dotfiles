@@ -4,3 +4,4 @@ hosts: localhost
     - bootstrap
     - security
     - shell-defaults
+    - applications
