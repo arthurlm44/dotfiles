@@ -1,6 +1,11 @@
 ---
 - name: add google apt key
+  become: true
   apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+
+- name: add google apt repo
+  become: true
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
 
 - name: install applications
   package: name={{ item }} state=latest
