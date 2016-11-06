@@ -1,7 +1,10 @@
 ---
-- name: ensure latest version of git is installed
+- name: ensure presence of baseline packages
   become: true
-  package: name=git state=latest
+  package: name={{ item }} state=latest
+  with_items:
+    - git
+    - curl
 
 - name: install vim
   become: true

@@ -11,4 +11,4 @@
   copy: dest=~/.bash-preferences.sh src=bash_preferences.sh
 
 - name: load aliases
-  lineinfile: dest=~/.profile line="source ~/.bash-preferences.sh"
+  lineinfile: dest=~/.bashrc line="source ~/.bash-preferences.sh"
