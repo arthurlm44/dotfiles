@@ -1,5 +1,9 @@
 ---
-# - name: install applications
-#   package: name={{ item }} state=latest
-#   with_items:
-#     - google-chrome-stable
+- name: add google apt key
+  apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+
+- name: install applications
+  package: name={{ item }} state=latest
+  with_items:
+    - google-chrome-stable
+    - tmux

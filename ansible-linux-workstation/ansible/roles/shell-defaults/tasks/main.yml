@@ -12,3 +12,6 @@
 
 - name: load aliases
   lineinfile: dest=~/.bashrc line="source ~/.bash-preferences.sh"
+
+- name: install tmux-conf to home
+  copy: src=tmux-conf dest=~/.tmux.conf
