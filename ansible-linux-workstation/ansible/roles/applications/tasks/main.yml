@@ -13,3 +13,4 @@
   with_items:
     - google-chrome-stable
     - tmux
+    - chromium-browser
