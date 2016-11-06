@@ -8,6 +8,7 @@
   apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
 
 - name: install applications
+  become: true
   package: name={{ item }} state=latest
   with_items:
     - google-chrome-stable
