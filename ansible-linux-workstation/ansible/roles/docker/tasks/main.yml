@@ -1,0 +1,19 @@
+---
+- name: install docker and dependencies
+  become: true
+  package: name={{ item }} state=latest  
+  with_items:
+    - docker-engine
+    - docker-compose
+
+- name: ensure docker group is present
+  become: true
+  group: name=docker state=present
+
+- name: add user to docker group
+  become: true
+  user: append=yes user={{ lookup('env', 'USER') }} groups=docker
+
+- name: ensure dot docker directory exists
+  file: dest=~/.docker state=directory
+
