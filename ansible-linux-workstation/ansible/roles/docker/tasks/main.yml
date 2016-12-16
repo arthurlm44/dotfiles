@@ -12,7 +12,10 @@
   package: name={{ item }} state=latest  
   with_items:
     - docker-engine
-    - docker-compose
+
+- name: install docker-compose
+  become: true
+  pip: name="docker-compose" state="present"
 
 - name: ensure docker group is present
   become: true
