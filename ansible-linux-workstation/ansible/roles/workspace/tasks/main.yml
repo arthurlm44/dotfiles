@@ -1,0 +1,8 @@
+---
+name: ensure workspace dir is present
+file: path=~/workspace state=directory
+
+name: ensure repos are cloned
+git: clone=yes dest=~/workspace/{{ item }} repo: ssh://git@bitbucket.org:{{ item }}.git
+with_items:
+  - arthurlm44/torrent
