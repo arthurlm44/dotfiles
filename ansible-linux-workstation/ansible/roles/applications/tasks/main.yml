@@ -16,9 +16,16 @@
   become: true
   apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
 
+- name: add spotify key
+  become: true
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 state=present id=BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
 - name: add google apt repo
   become: true
-  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
+  apt_repository: repo="deb {{ item }}" state=present
+  with_items:
+    - "http://repository.spotify.com stable non-free"
+    - "http://dl.google.com/linux/chrome/deb/ stable main"
 
 - name: install applications
   become: true
@@ -30,6 +37,7 @@
     - htop
     - smartmontools
     - tlp
+    - spotify-client
 
 - name: ensure power saving tools are enabled
   become: true

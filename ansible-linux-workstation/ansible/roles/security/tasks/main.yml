@@ -17,10 +17,10 @@
   when: result.changed
   service: name=ssh state=restarted enabled=yes
 
-- name: ensure ssh-key is loaded
-  shell: ssh-add -L | grep id_rsa
-  register: ssh_agent_status
+# - name: ensure ssh-key is loaded
+#   shell: ssh-add -L | grep id_rsa
+#   register: ssh_agent_status
 
-- name: add ssh key to ssh agent
-  shell: ssh-add ~/.ssh/id_rsa
-  when: ssh_agent_status.rc != 0
+# - name: add ssh key to ssh agent
+#   shell: ssh-add ~/.ssh/id_rsa
+#   when: ssh_agent_status.rc != 0
