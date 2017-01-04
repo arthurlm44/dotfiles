@@ -28,3 +28,16 @@
     - tmux
     - chromium-browser
     - htop
+    - smartmontools
+    - tlp
+
+- name: ensure power saving tools are enabled
+  become: true
+  systemd: name={{ item }}.service state=started daemon_reload=yes enabled=yes
+  with_items:
+    - tlp
+    - tlp-sleep
+
+- name: ensure conflicting power saving package is disabled
+  become: true
+  systemd: name="systemd-rfkill.service" enabled=no state=stopped
