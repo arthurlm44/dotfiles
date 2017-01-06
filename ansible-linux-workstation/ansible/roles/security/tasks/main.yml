@@ -19,6 +19,7 @@
 
 - name: is ssh key already loaded in ssh-agent
   shell: "ssh-add -L | grep id_rsa"
+  ignore_errors: true
   register: key_status
 
 - when: key_status.rc != 0
