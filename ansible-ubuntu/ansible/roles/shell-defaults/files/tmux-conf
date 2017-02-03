@@ -1,3 +1,6 @@
+## git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm<Paste>
+#
+set -g @tpm_plugins 'tmux-plugins/tmux-yank'
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
@@ -12,7 +15,9 @@ bind-key -t vi-copy 'v' begin-selection
 
 set-option -g renumber-windows on
 set-option -g history-limit 999999
+set-option -g default-command "reattach-to-user-namespace -l bash"
 
 unbind r
 bind r source-file ~/.tmux.conf
+run-shell '~/.tmux/plugins/tpm/tpm'
 
