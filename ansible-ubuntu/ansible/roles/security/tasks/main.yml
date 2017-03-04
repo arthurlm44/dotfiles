@@ -27,5 +27,3 @@
   - name: eval ssh agent
     shell: "eval `ssh-agent`"
 
-  - name: add ssh key to ssh agent
-    shell: ssh-add ~/.ssh/id_rsa
