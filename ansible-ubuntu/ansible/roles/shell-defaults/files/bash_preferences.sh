@@ -13,5 +13,5 @@ fi
 # Aliases
 
 alias la="ls -alrt"
-export GOPATH=~/workspace/go
 export COLLATION=utf8_general_ci
+export PATH=$PATH:/usr/local/go/bin
