@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## currently works for Ubuntu 16.04 -- maybe adapt for Arch in the future
-cat /etc/*-release | grep Xenial;
+cat /etc/*-release | grep Yakkety;
 IS_XENIAL=$?;
 
 if [ $IS_XENIAL -eq 0 ]
