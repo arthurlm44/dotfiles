@@ -19,7 +19,8 @@ bind-key -t vi-copy 'v' begin-selection
 
 set-option -g renumber-windows on
 set-option -g history-limit 999999
-set-option -g default-command "reattach-to-user-namespace -l bash"
+# NOTE: uncomment the following for OSX
+# set-option -g default-command "reattach-to-user-namespace -l bash"
 
 unbind r
 bind r source-file ~/.tmux.conf
