@@ -15,4 +15,5 @@ fi
 alias la="ls -alrt"
 export COLLATION=utf8_general_ci
 export GOPATH=~/workspace/go
+export EDITOR=/usr/bin/vim
 export PATH=$PATH:/usr/local/go/bin
