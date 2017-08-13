@@ -36,3 +36,8 @@
 - name: install turn off trakcpad script
   become: true
   copy: dest=/usr/local/bin/turn-off-touchpad src=turn-off-touchpad.sh mode=0755
+
+- name: custom hosts for local home network
+  become: true
+  lineinfile: dest=/etc/hosts line="{{ item }}"
+  with_items: "192.168.1.11 wolfpack.local"
