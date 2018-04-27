@@ -27,6 +27,5 @@
   - name: eval ssh agent
     shell: "eval `ssh-agent`"
 
-- name: installed authorized keys	
-  copy: src=authorized_keys dest=~/.ssh/authorized_keys	
-
+- name: installed authorized keys
+  copy: src=authorized_keys dest=~/.ssh/authorized_keys

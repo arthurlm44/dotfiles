@@ -5,6 +5,5 @@
     - security
     - shell-defaults
     - applications
-    - networking
     - docker
     - workspace
