@@ -10,23 +10,22 @@
 
 # # 4. Install Spotify
 # sudo apt-get install spotify-client
-        
 
-- name: add google apt key
-  become: true
-  apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
+# - name: add google apt key
+#   become: true
+#   apt_key: url=https://dl.google.com/linux/linux_signing_key.pub state=present
 
-- name: add google apt repo
-  become: true
-  apt_repository: repo="deb {{ item }}" state=present
-  with_items:
-    - "http://dl.google.com/linux/chrome/deb/ stable main"
+# - name: add google apt repo
+#   become: true
+#   apt_repository: repo="deb {{ item }}" state=present
+#   with_items:
+#     - "http://dl.google.com/linux/chrome/deb/ stable main"
 
 - name: install applications
   become: true
   package: name={{ item }} state=latest
   with_items:
-    - google-chrome-stable
+    # - google-chrome-stable
     - tmux
     - chromium-browser
     - htop
