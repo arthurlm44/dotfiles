@@ -7,7 +7,7 @@ case $1 in
     sudo kubeadm init
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-    sudo chown arthur. $HOME/.kube/config
+    sudo chown $USER. $HOME/.kube/config
     kubectl taint nodes --all node-role.kubernetes.io/master-
     kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     ;;
