@@ -15,4 +15,8 @@ case $1 in
     rm -rf $HOME/.kube
     sudo kubeadm reset
     ;;
+  "helm")
+    kubectl create -f helm-rbac.yaml
+    helm init --service-account tiller
+    ;;
 esac
