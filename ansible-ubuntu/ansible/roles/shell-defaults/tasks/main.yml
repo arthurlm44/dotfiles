@@ -19,23 +19,23 @@
 - name: make vim default git editor because why the fuck should it be anything else
   shell: "git config --global core.editor 'vim'"
 
-- name: does this have synaptics touchpad
-  shell: "xinput list | grep Syn | awk '{ print $3,$4 }' | grep 'SynPS/2 Synaptics' >> /dev/null && echo $?"
-  register: touchpad_enabled
-  ignore_errors: true
+# - name: does this have synaptics touchpad
+#   shell: "xinput list | grep Syn | awk '{ print $3,$4 }' | grep 'SynPS/2 Synaptics' >> /dev/null && echo $?"
+#   register: touchpad_enabled
+#   ignore_errors: true
 
-- name: what is my touchpad id
-  shell: xinput list | grep Syn | awk '{ print $6 }' | sed 's/^[^=]*=//'
-  register: touchpad_id
-  when: "{{ touchpad_enabled.stdout == '0' }}"
+# - name: what is my touchpad id
+#   shell: xinput list | grep Syn | awk '{ print $6 }' | sed 's/^[^=]*=//'
+#   register: touchpad_id
+#   when: "{{ touchpad_enabled.stdout == '0' }}"
 
-- name: turn off touchpad
-  shell: xinput --disable "{{ touchpad_id.stdout }}"
-  when: "{{ touchpad_enabled.stdout == '0' }}"
+# - name: turn off touchpad
+#   shell: xinput --disable "{{ touchpad_id.stdout }}"
+#   when: "{{ touchpad_enabled.stdout == '0' }}"
 
-- name: install turn off trakcpad script
-  become: true
-  copy: dest=/usr/local/bin/turn-off-touchpad src=turn-off-touchpad.sh mode=0755
+# - name: install turn off trakcpad script
+#   become: true
+#   copy: dest=/usr/local/bin/turn-off-touchpad src=turn-off-touchpad.sh mode=0755
 
 - name: custom hosts for local home network
   become: true
