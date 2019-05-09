@@ -42,3 +42,51 @@
 - name: ensure conflicting power saving package is disabled
   become: true
   systemd: name="systemd-rfkill.service" enabled=no state=stopped
+
+- name: download terraform package
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: /var/tmp/terraform-{{ terraform_version }}.zip
+    checksum: "sha256:{{ terraform_shasum }}"
+
+- name: unzip terraform package
+  unarchive:
+    src: "/var/tmp/terraform-{{ terraform_version }}.zip"
+    dest: "/var/tmp/"
+
+- name: add terraform binary to path
+  become: true
+  copy:
+    src: /var/tmp/terraform
+    dest: /usr/local/bin/terraform
+    mode: 0755
+
+- name: download terragrunt package
+  get_url:
+    url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+    dest: /var/tmp/terraform-{{ terragrunt_version }}
+    checksum: "sha256:{{ terragrunt_shasum }}"
+
+- name: add terragrunt binary to path
+  become: true
+  copy:
+    src: /var/tmp/terraform-{{ terragrunt_version }}
+    dest: /usr/local/bin/terragrunt
+    mode: 0755
+
+- name: install current google GPG key
+  become: true
+  apt_key: state=present url=https://packages.cloud.google.com/apt/doc/apt-key.gpg id=6A030B21BA07F4FB
+
+- name: add google apt repo
+  become: true
+  apt_repository:
+    repo: "deb https://packages.cloud.google.com/apt cloud-sdk-bionic main"
+    state: present
+
+- name: install google-cloud-sdk
+  become: true
+  apt:
+    name: "google-cloud-sdk"
+    state: present
+    update_cache: true
