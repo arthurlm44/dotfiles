@@ -21,6 +21,10 @@
 #   with_items:
 #     - "http://dl.google.com/linux/chrome/deb/ stable main"
 
+- name: what's ma distro?
+  shell: bash -l lsb_release -c | awk '{print $2}'
+  register: ubuntu_version
+
 - name: install applications
   become: true
   package: name={{ item }} state=latest
@@ -81,7 +85,7 @@
 - name: add google apt repo
   become: true
   apt_repository:
-    repo: "deb https://packages.cloud.google.com/apt cloud-sdk-bionic main"
+    repo: "deb https://packages.cloud.google.com/apt cloud-sdk-{{ ubuntu_version.stdout }} main"
     state: present
 
 - name: install google-cloud-sdk
