@@ -22,7 +22,7 @@
 #     - "http://dl.google.com/linux/chrome/deb/ stable main"
 
 - name: what's ma distro?
-  shell: bash -l lsb_release -c | awk '{print $2}'
+  shell: lsb_release -c | awk '{print $2}'
   register: ubuntu_version
 
 - name: install applications

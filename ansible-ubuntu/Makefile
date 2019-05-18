@@ -8,7 +8,7 @@ all: everything
 unlock-sudo: /usr/local/bin/ansible /depends-on-being-user/$(username)
 	@echo "Installing Arthur's preferred Linux workstation setup"
 	@echo
-	$(ansible) --ask-sudo-pass ansible/unlock-sudo.yml
+	$(ansible) --ask-become-pass ansible/unlock-sudo.yml
 
 lock-sudo:
 	$(ansible) ansible/lock-sudo.yml
