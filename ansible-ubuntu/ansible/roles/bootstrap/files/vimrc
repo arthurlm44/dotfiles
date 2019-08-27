@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/candycode.vim'
 Plug 'tpope/vim-commentary'
-Plug 'townk/vim-autoclose/'
-Plug 'alvan/vim-closetag'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'pearofducks/ansible-vim'
