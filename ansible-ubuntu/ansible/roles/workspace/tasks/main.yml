@@ -1,4 +1,0 @@
----
-- name: ensure workspace dir is present
-  file: path=~/workspace state=directory
-
