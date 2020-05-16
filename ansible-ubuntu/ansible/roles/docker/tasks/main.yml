@@ -12,6 +12,7 @@
   package: name={{ item }} state=latest
   with_items:
     - docker.io
+    - docker-compose
 
 - name: install docker-compose
   become: true
