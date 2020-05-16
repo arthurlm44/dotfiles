@@ -38,6 +38,11 @@
 - name: install tmux-conf to home
   copy: src=tmux-conf dest=~/.tmux.conf
 
+- name: install tpm
+  git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "/home/arthur/.tmux/plugins/tpm"
+
 - name: make vim default git editor because why the fuck should it be anything else
   shell: "git config --global core.editor 'vim'"
 

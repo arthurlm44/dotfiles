@@ -65,23 +65,6 @@
 #     dest: /usr/local/bin/terragrunt
 #     mode: 0755
 
-- name: install current google GPG key
-  become: true
-  apt_key: state=present url=https://packages.cloud.google.com/apt/doc/apt-key.gpg id=6A030B21BA07F4FB
-
-- name: add google apt repo
-  become: true
-  apt_repository:
-    repo: "deb https://packages.cloud.google.com/apt cloud-sdk-{{ ubuntu_version.stdout }} main"
-    state: present
-
-- name: install google-cloud-sdk
-  become: true
-  apt:
-    name: "google-cloud-sdk"
-    state: present
-    update_cache: true
-
 # - name: download helm tarball
 #   become: true
 #   get_url:
