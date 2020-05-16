@@ -5,10 +5,7 @@
   with_items:
     - git
     - curl
-
-- name: install vim
-  become: true
-  package: name=vim state=latest
+    - vim
 
 - name: setup for vimrc
   file: state=directory path=~/.tmp/{{ item }} 
@@ -22,3 +19,25 @@
 
 - name: install vimrc
   copy: src=vimrc dest=~/.vimrc
+
+- name: git alias st to status
+  git_config: scope=global name=alias.st value=status
+
+- name: git alias br to branch
+  git_config: scope=global name=alias.br value=branch
+
+- name: git alias co to checkout
+  git_config: scope=global name=alias.co value=checkout
+
+- name: install mavenlink bash aliases
+  copy: dest=~/.bash-preferences.sh src=bash_preferences.sh
+
+- name: load aliases
+  lineinfile: dest=~/.bashrc line="source ~/.bash-preferences.sh"
+
+- name: install tmux-conf to home
+  copy: src=tmux-conf dest=~/.tmux.conf
+
+- name: make vim default git editor because why the fuck should it be anything else
+  shell: "git config --global core.editor 'vim'"
+
