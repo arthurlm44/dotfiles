@@ -33,84 +33,54 @@
     - tmux
     - chromium-browser
     - htop
-    - smartmontools
-    - tlp
 
-- name: ensure power saving tools are enabled
-  become: true
-  systemd: name={{ item }}.service state=started daemon_reload=yes enabled=yes
-  with_items:
-    - tlp
-    - tlp-sleep
+# - name: download terraform package
+#   get_url:
+#     url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+#     dest: /var/tmp/terraform-{{ terraform_version }}.zip
+#     checksum: "sha256:{{ terraform_shasum }}"
 
-- name: ensure conflicting power saving package is disabled
-  become: true
-  systemd: name="systemd-rfkill.service" enabled=no state=stopped
+# - name: unzip terraform package
+#   unarchive:
+#     src: "/var/tmp/terraform-{{ terraform_version }}.zip"
+#     dest: "/var/tmp/"
 
-- name: download terraform package
-  get_url:
-    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-    dest: /var/tmp/terraform-{{ terraform_version }}.zip
-    checksum: "sha256:{{ terraform_shasum }}"
+# - name: add terraform binary to path
+#   become: true
+#   copy:
+#     src: /var/tmp/terraform
+#     dest: /usr/local/bin/terraform
+#     mode: 0755
 
-- name: unzip terraform package
-  unarchive:
-    src: "/var/tmp/terraform-{{ terraform_version }}.zip"
-    dest: "/var/tmp/"
+# - name: download terragrunt package
+#   get_url:
+#     url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+#     dest: /var/tmp/terraform-{{ terragrunt_version }}
+#     checksum: "sha256:{{ terragrunt_shasum }}"
 
-- name: add terraform binary to path
-  become: true
-  copy:
-    src: /var/tmp/terraform
-    dest: /usr/local/bin/terraform
-    mode: 0755
+# - name: add terragrunt binary to path
+#   become: true
+#   copy:
+#     src: /var/tmp/terraform-{{ terragrunt_version }}
+#     dest: /usr/local/bin/terragrunt
+#     mode: 0755
 
-- name: download terragrunt package
-  get_url:
-    url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
-    dest: /var/tmp/terraform-{{ terragrunt_version }}
-    checksum: "sha256:{{ terragrunt_shasum }}"
+# - name: download helm tarball
+#   become: true
+#   get_url:
+#     url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+#     dest: /var/tmp/helm-{{ helm_version }}.tar.gz
+#     checksum: "sha256:{{ helm_shasum }}"
 
-- name: add terragrunt binary to path
-  become: true
-  copy:
-    src: /var/tmp/terraform-{{ terragrunt_version }}
-    dest: /usr/local/bin/terragrunt
-    mode: 0755
+# - name: untar helm
+#   become: true
+#   unarchive:
+#     src: "/var/tmp/helm-{{ helm_version }}.tar.gz"
+#     dest: "/var/tmp/"
 
-- name: install current google GPG key
-  become: true
-  apt_key: state=present url=https://packages.cloud.google.com/apt/doc/apt-key.gpg id=6A030B21BA07F4FB
-
-- name: add google apt repo
-  become: true
-  apt_repository:
-    repo: "deb https://packages.cloud.google.com/apt cloud-sdk-{{ ubuntu_version.stdout }} main"
-    state: present
-
-- name: install google-cloud-sdk
-  become: true
-  apt:
-    name: "google-cloud-sdk"
-    state: present
-    update_cache: true
-
-- name: download helm tarball
-  become: true
-  get_url:
-    url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-    dest: /var/tmp/helm-{{ helm_version }}.tar.gz
-    checksum: "sha256:{{ helm_shasum }}"
-
-- name: untar helm
-  become: true
-  unarchive:
-    src: "/var/tmp/helm-{{ helm_version }}.tar.gz"
-    dest: "/var/tmp/"
-
-- name: add helm binary to path
-  become: true
-  copy:
-    src: /var/tmp/linux-amd64/helm
-    dest: /usr/local/bin/helm
-    mode: 0755
+# - name: add helm binary to path
+#   become: true
+#   copy:
+#     src: /var/tmp/linux-amd64/helm
+#     dest: /usr/local/bin/helm
+#     mode: 0755

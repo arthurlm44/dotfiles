@@ -2,8 +2,5 @@
 - hosts: localhost
   roles:
     - bootstrap
-    - security
-    - shell-defaults
     - applications
     - docker
-    - workspace
