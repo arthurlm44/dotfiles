@@ -7,7 +7,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'pearofducks/ansible-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
+Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 syntax on
 filetype plugin indent on
