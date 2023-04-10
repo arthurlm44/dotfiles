@@ -1,13 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/candycode.vim'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rails'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'hashivim/vim-terraform'
-Plug 'pearofducks/ansible-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'ekalinin/Dockerfile.vim'
+" Plug 'hashivim/vim-terraform'
+" Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 syntax on
 filetype plugin indent on
