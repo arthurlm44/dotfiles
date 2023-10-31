@@ -1,11 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/candycode.vim'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'hashivim/vim-terraform'
-" Plug 'ekalinin/Dockerfile.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 syntax on
 filetype plugin indent on
@@ -17,6 +17,7 @@ set backupdir=~/.tmp/backup
 set undofile
 set undodir=~/.tmp/undo/
 set hlsearch
+set mouse=
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 nnoremap <silent> <C-p> :Files<cr>

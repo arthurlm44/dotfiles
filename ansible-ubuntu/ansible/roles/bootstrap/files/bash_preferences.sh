@@ -14,5 +14,9 @@ fi
 
 export COLLATION=utf8_general_ci
 export EDITOR=/usr/bin/vim
+export TERM="xterm"
 
 alias teemux='ssh-add && tmux a || tmux'
+alias vim='nvim'
+
+export PATH=$PATH:/home/arthur/.bin
