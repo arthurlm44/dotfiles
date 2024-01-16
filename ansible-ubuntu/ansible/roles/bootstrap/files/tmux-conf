@@ -5,21 +5,15 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
-
-set -g default-terminal "screen-256color"
-# set -g default-terminal "xterm-256color"
-
+set -g default-terminal "xterm-256color"
 set -g base-index 1
 set -g mouse on
 set -sg escape-time 0
-
 set-window-option -g mode-keys vi
 set-option -g renumber-windows on
 set-option -g history-limit 999999
-
 unbind r
 bind r source-file ~/.tmux.conf
-
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'

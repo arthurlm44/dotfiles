@@ -5,7 +5,6 @@ Plug 'tpope/vim-rails'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
-Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 syntax on
 filetype plugin indent on
@@ -21,7 +20,5 @@ set mouse=
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 nnoremap <silent> <C-p> :Files<cr>
-
 let g:terraform_fmt_on_save=1
 set guicursor=
-

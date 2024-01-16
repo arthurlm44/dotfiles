@@ -14,9 +14,13 @@ fi
 
 export COLLATION=utf8_general_ci
 export EDITOR=/usr/bin/vim
-export TERM="xterm"
+# export TERM="xterm"
 
 alias teemux='ssh-add && tmux a || tmux'
 alias vim='nvim'
+alias kubectx='kubectl ctx'
+alias kubens='kubectl ns'
 
 export PATH=$PATH:/home/arthur/.bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
