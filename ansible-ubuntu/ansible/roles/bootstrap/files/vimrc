@@ -1,14 +1,16 @@
 call plug#begin('~/.vim/plugged')
-Plug 'vim-scripts/candycode.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-rails'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'hashivim/vim-terraform'
-" Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 syntax on
 filetype plugin indent on
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+nnoremap <silent> <C-p> :Files<cr>
+let g:terraform_fmt_on_save=1
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab 
 set number
 set dir=~/.tmp/swap
@@ -18,10 +20,4 @@ set undofile
 set undodir=~/.tmp/undo/
 set hlsearch
 set mouse=
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-nnoremap <silent> <C-p> :Files<cr>
-
-let g:terraform_fmt_on_save=1
 set guicursor=
-
